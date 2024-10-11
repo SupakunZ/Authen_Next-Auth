@@ -1,19 +1,45 @@
 import * as React from 'react';
+import { CiCircleAlert } from 'react-icons/ci';
+import { ImEye, ImEyeBlocked } from 'react-icons/im';
 
 interface IInputsProps {
   name: string,
   label: string,
   type: string,
-  placeholder: string
+  placeholder: string,
+  register: any,
+  error: any,
+  disable: any
 }
 
 const Inputs: React.FunctionComponent<IInputsProps> = (props) => {
-  const { name, label, type, placeholder } = props
+  const [showpassword, setShowpassword] = React.useState(false)
+  const { name, label, type, placeholder, register, error, disable } = props
   return (
-    <>
-      <h1>Inputs</h1>
-      <input name={name} type={type} placeholder={placeholder} />
-    </>
+    <div className='mt-3 w-[100%]'>
+      <label htmlFor={name}>
+        {label} :
+      </label>
+      <div className='relative'>
+        <input className='w-full border py-2 pr-5 pl-4' name={name} type={showpassword ? 'text' : type} placeholder={placeholder} {...register(name)} style={{ borderColor: `${error ? "#ED4337" : ""}` }} />
+
+        {/* Show password */}
+        {(name == 'password' || name == 'ConPassword') && (
+          <div className='absolute top-3 right-3 cursor-pointer'
+            style={{ right: `${error ? '2rem' : ''}` }}
+            onClick={() => setShowpassword(!showpassword)}
+          >
+            {showpassword ? <ImEye /> : <ImEyeBlocked />}
+          </div>
+        )}
+
+        {error &&
+          (<div className='fill-red-500 absolute right-2 top-2 text-xl'><CiCircleAlert fill='red' /></div>)
+        }
+        {error && <p className='text-red-500 text-sm'>{error}</p>}
+      </div>
+    </div>
+
   );
 };
 

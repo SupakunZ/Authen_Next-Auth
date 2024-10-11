@@ -1,0 +1,11 @@
+Library
+- monggoose -> เชื่อมต่อกับ database
+- hookform -> เก็บค่าจาก input
+- @hookform/resolvers -> ใช้แสดงผลลัพท์ของ error
+- react icons -> icon
+- zod -> validation ตรวจสอบว่าข้อมูลที่รับมาหรือส่งออกไปนั้นถูกต้องตามที่เราต้องการรึป่าว
+- zxcvbn -> แสดง score ของ password ที่ตั้งว่าเท่าไหร่
+- react toastify -> alert notification
+- axios ->
+- validator -> ตรวจสอบความถูกต้องของข้อมูลที่ส่งมาหลังบ้าน
+- bcryptjs ->
