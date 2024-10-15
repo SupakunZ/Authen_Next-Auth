@@ -22,7 +22,7 @@ const FormSchema = z
   })
 
 type FormSchemaType = z.infer<typeof FormSchema>;
-interface ILoginProps { }
+interface ILoginProps {}
 
 const Login: React.FunctionComponent<ILoginProps> = (props) => {
   const router = useRouter()
@@ -39,8 +39,8 @@ const Login: React.FunctionComponent<ILoginProps> = (props) => {
 
 
   const onSubmit: SubmitHandler<FormSchemaType> = async (values) => {
-    const res: any = await signIn("credentials", {
-      redirect: false,
+    const res: any = await signIn("credentials", { //**ส่งค่าไปให้ NextAuth**
+      redirect: false, // ไม่ให้ redirect
       email: values.email,
       password: values.password,
     })
@@ -49,7 +49,6 @@ const Login: React.FunctionComponent<ILoginProps> = (props) => {
     } else {
       return router.push('/')
     }
-
   }
 
   return (
